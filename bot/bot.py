@@ -17,14 +17,12 @@ def main():
 
     try:
         start_handler = CommandHandler('start', start.handler)
-        nothing_to_do_handler = CommandHandler('nadaprafazer', nothing_to_do.handler)
-        support_handler = CommandHandler('support', support.handler)
-        unknown_handler = MessageHandler([Filters.command], unknown.handler)
-        support_msg_handler = MessageHandler([Filters.text], support_message.handler)
         dispatcher.add_handler(start_handler)
-        dispatcher.add_handler(nothing_to_do_handler)
+        support_handler = CommandHandler('support', support.handler)
         dispatcher.add_handler(support_handler)
+        unknown_handler = MessageHandler([Filters.command], unknown.handler)
         dispatcher.add_handler(unknown_handler)
+        support_msg_handler = MessageHandler([Filters.text], support_message.handler)
         dispatcher.add_handler(support_msg_handler)
     # Message handler must be the last one
     except Exception as e:
